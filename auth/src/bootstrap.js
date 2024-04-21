@@ -9,7 +9,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     }) //Memory History object
 
     if(onNavigate){
-    history.listen(onNavigate) // callback from Container to sync any routing changes in Marketing sub-app
+    history.listen(onNavigate) // callback from Container to sync any routing changes in Auth sub-app
     }
 
     ReactDOM.render(
@@ -29,7 +29,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 }
 
 if(process.env.NODE_ENV === "development"){
-    const devRoot = document.querySelector('#_marketing-dev-root')
+    const devRoot = document.querySelector('#_auth-dev-root')
 
     if(devRoot){
         mount(devRoot, {defaultHistory: createBrowserHistory()})
