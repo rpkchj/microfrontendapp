@@ -2,7 +2,7 @@ import {mount as mountAuth} from 'auth/AuthApp'
 import React,{useRef, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
-export default() => {
+export default({ onSignInCallback }) => {
     const ref = useRef(null) //reference to an HTML element for rendering
     const history = useHistory() //Browser History object
 
@@ -14,7 +14,9 @@ export default() => {
                 if(currentPath !== nextPathName){ //to check if Container is already at the desired location and prevent infinite callback calls
                     history.push(nextPathName)
                 }
-            }
+            },
+            onSignIn: () => onSignInCallback()
+            
         })
 
         history.listen(onParentNavigate) //listening for navigation changes in Container and calling the sub-app callback function
